@@ -1,13 +1,12 @@
-import { setCookie } from 'cookies-next'
+import { getCookie, setCookie } from 'cookies-next'
 import i18n from '../i18n';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 export default function Home() {
   const router = useRouter();
-  // get locale from path
+  console.log(router.locale, i18n.language, getCookie('NEXT_LOCALE'));
   useEffect(() => {
-
     if (router.locale !== i18n.language) {
       i18n.changeLanguage(router.locale);
       setCookie('NEXT_LOCALE', router.locale)
