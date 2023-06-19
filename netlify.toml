@@ -1,5 +1,5 @@
 [[redirects]]
-from = "https:/tonyltf-test.netlify.app/*"
+from = "https://tonyltf-test.netlify.app/*"
 to = "https://test.tonyltf.info/:splat"
 status = 301
 force = true
