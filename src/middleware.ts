@@ -11,13 +11,13 @@ export async function middleware(req: NextRequest) {
     return
   }
   console.log(req.nextUrl, req.url);
-  if (req.nextUrl.locale === 'zh-HK') {
-    const locale = req.cookies.get('NEXT_LOCALE')?.value || 'en'
+  // if (req.nextUrl.locale === 'zh-HK') {
+    // const locale = req.cookies.get('NEXT_LOCALE')?.value || 'en'
  
     return NextResponse.redirect(
-      new URL(`/${locale}${req.nextUrl.pathname}${req.nextUrl.search}`, req.url)
+      new URL(`/${'zh-HK'}${req.nextUrl.pathname}${req.nextUrl.search}`, req.url)
     )
-  }
+  // }
 }
 
 export const config = {
