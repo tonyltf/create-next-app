@@ -1,0 +1,5 @@
+[[redirects]]
+from = "https://6490705bea4c24000822ef52--tonyltf-test.netlify.app"
+to = "https://test.tonyltf.info"
+status = 301
+force = true
