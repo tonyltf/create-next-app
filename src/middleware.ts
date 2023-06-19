@@ -12,14 +12,10 @@ export async function middleware(req: NextRequest) {
   }
   const locale = req.cookies.get('NEXT_LOCALE')?.value
   console.log(req.nextUrl, req.url, { locale });
-  if (locale !== 'zh-HK' && !req.nextUrl.pathname.match('zh-HK')) {
- 
+  if (!locale) {
     const url = new URL(`/${'zh-HK'}${req.nextUrl.pathname}${req.nextUrl.search}`, req.url);
     console.log({ url }, url.href);
-
-    return NextResponse.redirect(
-      new URL(`/${'zh-HK'}${req.nextUrl.pathname}${req.nextUrl.search}`, req.url)
-    )
+    return NextResponse.redirect(url)
   }
 }
 
