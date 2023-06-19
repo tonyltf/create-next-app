@@ -10,7 +10,7 @@ export async function middleware(req: NextRequest) {
   ) {
     return
   }
-  console.log(req.nextUrl, req.headers);
+  console.log(req.nextUrl, req.url);
   if (req.nextUrl.locale === 'zh-HK') {
     const locale = req.cookies.get('NEXT_LOCALE')?.value || 'en'
  
