@@ -11,10 +11,10 @@ export async function middleware(req: NextRequest) {
     return
   }
   const locale = req.cookies.get('NEXT_LOCALE')?.value
-  console.log(req.nextUrl, req.url, { locale });
-  if (!locale) {
+  console.log({ locale, nextLocale: req.nextUrl.locale, url: req.url, nextUrl: req.nextUrl });
+  if (!req.nextUrl.pathname.startsWith(`/zh-HK`) && !req.nextUrl.pathname.startsWith('/en')) {
     const url = new URL(`/${'zh-HK'}${req.nextUrl.pathname}${req.nextUrl.search}`, req.url);
-    console.log({ url }, url.href);
+    console.log({ url });
     return NextResponse.redirect(url)
   }
 }
