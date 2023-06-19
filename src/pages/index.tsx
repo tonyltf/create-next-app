@@ -1,10 +1,18 @@
 import { setCookie } from 'cookies-next'
-import { useTranslation } from 'react-i18next';
 import i18n from '../i18n';
+import { useEffect } from 'react';
 
 export default function Home() {
 
-  const { t  } = useTranslation();
+  // get locale from path
+  useEffect(() => {
+    const locale = window.location.pathname.split('/')[1];
+    if (locale && locale !== i18n.language) {
+      i18n.changeLanguage(locale);
+      setCookie('NEXT_LOCALE', locale)
+    }
+  }, []);
+
   const setLanguage = () => {
     i18n.changeLanguage(i18n.language === 'en' ? 'zh-HK' : 'en');
     setCookie('NEXT_LOCALE', i18n.language)
