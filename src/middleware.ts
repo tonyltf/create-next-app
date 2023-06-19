@@ -12,8 +12,8 @@ export async function middleware(req: NextRequest) {
   }
   const locale = req.cookies.get('NEXT_LOCALE')?.value
   console.log({ locale, nextLocale: req.nextUrl.locale, url: req.url, nextUrl: req.nextUrl });
-  if (!req.nextUrl.pathname.startsWith(`/zh-HK`) && !req.nextUrl.pathname.startsWith('/en')) {
-    const url = new URL(`/${'zh-HK'}${req.nextUrl.pathname}${req.nextUrl.search}`, req.url);
+  if (!locale && req.nextUrl.locale) {
+    const url = new URL(`/zh-HK${req.nextUrl.pathname}${req.nextUrl.search}`, req.url);
     console.log({ url });
     return NextResponse.redirect(url)
   }
